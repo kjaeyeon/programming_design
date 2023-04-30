@@ -10,6 +10,7 @@ while(1){
    else if(exit를 선택한다면)
       exit(1); //나가기
 }
+//게임 시작 화면
 //게임 설명 화면
 void game_rule(){
    printf("고스트는 당신에게 제일 빠른길로 다가오고 있습니다.\n 최대한 빨리 목적지를 향해 도망가세요!\n (황금열쇠)는 2스테이지에서 당신을 나가게 도와줄 것 입니다!");
@@ -20,21 +21,61 @@ void game_story(){
 }
 //타이머 설정
 //팩맨의 생성
+int packman_create(int x, int y){
+    gotoxy(x,y);
+    printf("(팩맨)");
+    return 1;
+}
+//팩맨 삭제
+void packman_remove(int x, int y){
+    gotoxy(x,y);
+    printf("\0");
+    
+}
 //팩맨의 움직임
 void packman_move(){
-while(game_start){
+while(game_start()){
    if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
       printf("벽은 넘을수 없다");
       continue;
    else if(오른쪽 방향키를 눌렀다면) //입력한 키와 오른쪽 키의 아스키 코드가 같다면
+      remove_packman(x,y);
       gotoxy(x+1,y); //오른쪽으로 한칸
+      create_packman(x,y);
+      
+      
    else if(왼쪽 방향키를 눌렀다면) 
-      gotoxy(x-1,y);
-   
+      remove_packman(x,y); //현재위치?
+      gotoxy(x-1,y); //왼쪽으로 한칸
+      create_packman(x,y);
+
+   else if(왼쪽 방향키를 눌렀다면) 
+      remove_packman(x,y);
+      gotoxy(x,y+1); //위쪽으로 한칸
+      create_packman(x,y);
+
+    else if(왼쪽 방향키를 눌렀다면) 
+      remove_packman(x,y);
+      gotoxy(x,y-1); //아래쪽으로 한칸
+      create_packman(x,y);
 }
 //고스트 생성
+void ghost_create(int x, int y){
+    gotoxy(x,y); 
+    printf("(호박)");
+}
 //고스트의 움직임
+void ghost_move(){
+    while(game_start()){
+        if(팩맨이 움직였다면)
+            ghost_movement++; //변수 1 증가
+        if(ghost_movement%3==0) //3번 증가하면 작동
+            팩맨이 있는 방향으로 1칸 움직이기;
+    }
 
+}
+   
+}
 //메인 함수
 int main(){
    game_menu();

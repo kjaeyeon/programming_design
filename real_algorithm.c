@@ -20,6 +20,23 @@ void game_story(){
     printf("할로윈 파티를 초대받아 대저택에 갔더니 귀신들만 있는 곳이었다. 귀신을 피해 미로를 통과하여 대저택을 탈출해라!");
 }
 //타이머 설정
+time_t start_time, end_time;
+double stage1_time = 0, stage2_time = 0;
+//(stage1)
+printf("게임 시작\n");
+start_time = time(NULL);
+printf("게임 종료\n");
+end_time = time(NULL);
+stage1_time = difftime(end_time, start_time);
+//(stage2)
+printf("게임 시작\n");
+start_time = time(NULL);
+printf("게임 종료\n");
+end_time = time(NULL);
+stage2_time = difftime(end_time, start_time);
+double total_time = stage1_time + stage2_time;
+printf("총 시간: %.2f초\n");
+return 0;
 //팩맨의 생성
 int packman_create(int x, int y){
     gotoxy(x,y);

@@ -34,6 +34,7 @@ start_time = time(NULL);
 printf("게임 종료\n");
 end_time = time(NULL);
 stage2_time = difftime(end_time, start_time);
+//(총 시간)
 double total_time = stage1_time + stage2_time;
 printf("총 시간: %.2f초\n");
 return 0;

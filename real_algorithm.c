@@ -50,5 +50,9 @@ int main(){
 //시야 제한
 //게임 결과 화면
 //명예의 전당 화
-*/
+
 //goto 함수 제작
+void gotoxy(int x, int y){
+   COORD Pos={x-1, y-1};
+   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Pos);
+*/

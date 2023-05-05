@@ -68,7 +68,6 @@ void packman_remove(int x, int y){
 void packman_move(){
 while(game_start()){
    if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
-      printf("벽은 넘을수 없다");
       continue;
    else if(오른쪽 방향키를 눌렀다면) //입력한 키와 오른쪽 키의 아스키 코드가 같다면
       remove_packman(x,y);

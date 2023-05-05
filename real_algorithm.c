@@ -122,6 +122,26 @@ int main(){
 //블럭 체크
 //게임 종료 조건
 //아이템 추가
+//아이템위치생성
+int item_row, item_col; //아이템의 생성위치
+
+//행과 열에서 랜덤위치생성
+void choose_random_location(int* row, int* col) {
+    do {
+        *row = rand() % ROW; //행에서 랜덤포인터지정
+        *col = rand() % COL; //열에서 랜덤포인터지정
+    } while (map[*row][*col] == 0); //이미 길인 경우는 제외
+}
+
+//황금열쇠 생성
+void gold_item(){
+
+//랜덤한 위치 선택
+choose_random_location(&item_row, &item_col);
+
+//선택한 위치에 황금열쇠 생성
+map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1은 벽이다.
+
 //bgm 추가
 //공포 이미지 추가
 //시야 제한

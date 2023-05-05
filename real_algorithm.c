@@ -208,6 +208,18 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 
 //bgm 추가
 //공포 이미지 추가
+void image_add(){
+    FILE *fp;
+    char ch;
+    fp = fopen("공포도트 이미지.txt", "r");
+    if(fp == NULL) {
+        return 1;
+    }
+    while((ch = fgetc(fp)) != EOF) {
+        printf("%c", ch);
+    }
+    fclose(fp);
+}
 //시야 제한 ->코딩 후 문제점이 발생하면 그래픽 함수 사용
 void display(int x, int y) {
     for (int i = x - 2; i <= x + 2; i++) {

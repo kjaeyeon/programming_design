@@ -69,25 +69,32 @@ void packman_move(){
    int key;
 while(game_start()){
    key값 입력;
-   if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
-      continue;
+   
    else if(오른쪽 방향키를 눌렀다면) //입력한 키와 오른쪽 키의 아스키 코드가 같다면
+      if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
+      continue;
       remove_packman(x,y);
       gotoxy(x+1,y); //오른쪽으로 한칸
       create_packman(x,y);
       
       
    else if(왼쪽 방향키를 눌렀다면) 
+      if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
+      continue;
       remove_packman(x,y); //현재위치?
       gotoxy(x-1,y); //왼쪽으로 한칸
       create_packman(x,y);
 
-   else if(왼쪽 방향키를 눌렀다면) 
+   else if(위쪽 방향키를 눌렀다면) 
+      if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
+      continue;
       remove_packman(x,y);
       gotoxy(x,y+1); //위쪽으로 한칸
       create_packman(x,y);
 
-    else if(왼쪽 방향키를 눌렀다면) 
+    else if(아래쪽 방향키를 눌렀다면) 
+      if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
+      continue;
       remove_packman(x,y);
       gotoxy(x,y-1); //아래쪽으로 한칸
       create_packman(x,y);

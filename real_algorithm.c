@@ -197,8 +197,34 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 //bgm 추가
 //공포 이미지 추가
 //시야 제한
-//게임 결과 화면
+
+//클리어 시간 출력
+stage_clear_time = stage1_time + stage2_time
+int clear_minutes = stage_clear_time/60;
+int clear_second = stage_clear_time%60;
+printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_secone);
+
+
 //명예의 전당 화면
+#define SIZE 10
+int all_time[SIZE]; //클리어 시간이 들어있는 배열
+int i, j, min, temp;
+for(i = 0; i < SIZE; i++){
+    min = i;
+    for(j=i+1; j<SIZE; j++){
+        if(all_time[j]<all_time[min]){
+            min = j;
+        }
+    }
+    temp = all_time[i];
+    all_time[j] = all_time[min];
+    all_time[min] = temp;
+}
+printf("순위\n");
+for(i=0; i<3; i++){
+    printf("%d\n",all_time[i]);
+    }
+}
 
 //goto 함수 제작
 void gotoxy(int x, int y){

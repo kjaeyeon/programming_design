@@ -173,6 +173,18 @@ void print_maze() {
 }
 //블럭 체크
 //게임 종료 조건
+//(stage1)
+if(팩맨이 목표지점에 도달하면)
+    break;
+    else if(고스트의 위치와 팩맨의 위치가 같아지면)
+    break;
+//(stage2)
+if(팩맨이 열쇠를 가지고 목표 지점에 도달하면)
+    break;
+    else if(고스트의 위치와 팩맨의 위치가 같아지면)
+    break;
+
+
 //아이템 추가
 //아이템위치생성
 int item_row, item_col; //아이템의 생성위치

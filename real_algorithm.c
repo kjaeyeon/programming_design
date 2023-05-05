@@ -216,7 +216,25 @@ choose_random_location(&item_row, &item_col);
 //선택한 위치에 황금열쇠 생성
 map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1은 벽이다.
 
-//bgm 추가
+//공포bgm 추가
+//헤더파일추가 #include<Windows.h>, #include <mmsystem.h>
+//Windows API를 사용해 공포 BGM파일을 불러온다.
+BOOL PlaySound(
+    LPCTSTR 재생할 사운드 파일의 경로,
+    HMODULE 사운드파일이 들어있는 모듈의 핸들(NULL사용)
+    DWORD SND_ASYNC
+);
+//공포BGM 불러와서 비동기적 재생
+int main() {
+    PlaySound(유니코드변환("공포 BGM"), NULL, SND_ASYNC);
+
+    // 게임 로직 등...
+
+    PlaySound(NULL, NULL, 0); // BGM 중지
+
+    return 0;
+}
+
 //공포 이미지 추가
 //시야 제한 ->코딩 후 문제점이 발생하면 그래픽 함수 사용
 void display(int x, int y) {

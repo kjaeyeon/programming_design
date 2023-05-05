@@ -202,7 +202,7 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 stage_clear_time = stage1_time + stage2_time
 int clear_minutes = stage_clear_time/60;
 int clear_second = stage_clear_time%60;
-printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_secone);
+printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_second);
 
 
 //명예의 전당 화면

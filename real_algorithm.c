@@ -196,7 +196,7 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 
 //bgm 추가
 //공포 이미지 추가
-//시야 제한
+//시야 제한 ->코딩 후 문제점이 발생하면 그래픽 함수 사용
 void display(int x, int y) {
     for (int i = x - 2; i <= x + 2; i++) {
         for (int j = y - 2; j <= y + 2; j++) {

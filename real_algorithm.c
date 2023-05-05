@@ -120,6 +120,7 @@ void maze(){
     create_maze();
     maze_set();
     print_maze();
+}
 //미로만들기
 void create_maze(){
     for (int i = 0; i < 길이; i++) {

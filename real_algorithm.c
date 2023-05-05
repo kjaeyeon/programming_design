@@ -172,6 +172,62 @@ void print_maze() {
     }
 }
 //블럭 체크
+int check_block(int /*이동 방향을 결정하기 위한 변수*/) {
+	while (1) {
+		int nx /*다음 이동할 위치를 나타내는 변수*/ = 현재 플레이어의 위치를 나타내는 변수/*x*/ + 상하좌우 방향으로 움직일 때의 x축 변화량 저장하는 배열;
+		int ny /*다음 이동할 위치를 나타내는 변수*/ = 현재 플레이어의 위치를 나타내는 변수/*y*/ + 상하좌우 방향으로 움직일 때의 y축 변화량 저장하는 배열;
+
+		if (미로의 상태를 저장하는 2차원 배열[nx][ny] == Road || 미로의 상태를 저장하는 2차원 배열[nx][ny] == Player) {
+			미로의 상태를 저장하는 2차원 배열[현재 플레이어의 x 위치][현재 플레이어의 y 위치] = Road;
+			미로의 상태를 저장하는 2차원 배열[nx][ny] == Player;
+
+			현재 플레이어의 x 위치 = nx;
+			현재 플레이어의 y 위치 = ny;
+			return 1;
+		}
+		else if (미로의 상태를 저장하는 2차원 배열[nx][ny] == Enemy) {
+			text_color();
+			system("cls");
+			text_color();
+
+			gotoxy(int x, int y);
+			cout << "           화면이 어두워지며 공포 이미지 출력             ";
+			gotoxy(int x, int y); // 종료하려면 enter키
+			text_color();
+			cout << "Press Enter\n";
+			int input = 0;
+			while (1) {
+				input = _getch();
+				if (input == ENTER) {
+					end_flag = true;
+					return 0;
+				}
+			}
+		}
+		else if (미로의 상태를 저장하는 2차원 배열[nx][ny] == GOAL) {
+			text_color();
+			system("cls");
+			text_color();
+
+			gotoxy(int x, int y);
+			cout << "             탈출!            ";
+			text_color();
+			gotoxy(int x, int y);
+			text_color();
+			cout << "Press Enter\n";
+			int input = 0;
+			while (1) {
+				input = _getch();
+				if (input == ENTER) {
+					end_flag = true;
+					return 0;
+				}
+			}
+		}
+		else return 0;
+	}
+}
+
 //게임 종료 조건
 bool clear(int stage){
 switch(stage){

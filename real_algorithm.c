@@ -113,7 +113,7 @@ int main(){
 
 //미로 만들기
 void maze(){
-    srand((unsigned)time(NULL));//미로값 초기화
+    srand((unsigned int)time(NULL));//미로값 초기화
     //미로크기 설정
     int length, width;//길이와 폭 설정
     system("cls");

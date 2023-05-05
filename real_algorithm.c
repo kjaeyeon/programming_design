@@ -66,8 +66,8 @@ void packman_remove(int x, int y){
 }
 //팩맨의 움직임
 void packman_move(){
-while(game_start()){
    int key;
+while(game_start()){
    key값 입력;
    if(벽이 있는 곳으로 방향키를 눌렀다면) //벽의 좌표와 자신의 좌표를 비교해 같다면
       continue;

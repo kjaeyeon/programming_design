@@ -191,53 +191,50 @@ int check_block(int /*이동 방향을 결정하기 위한 변수*/) {
 		if (미로의 상태를 저장하는 2차원 배열[nx][ny] == Road || 미로의 상태를 저장하는 2차원 배열[nx][ny] == Player) {
 			미로의 상태를 저장하는 2차원 배열[현재 플레이어의 x 위치][현재 플레이어의 y 위치] = Road;
 			미로의 상태를 저장하는 2차원 배열[nx][ny] == Player;
+			미로의 상태를 저장하는 2차원 배열[nx][ny] == wall
 
 			현재 플레이어의 x 위치 = nx;
 			현재 플레이어의 y 위치 = ny;
 			return 1;
 		}
-		else if (미로의 상태를 저장하는 2차원 배열[nx][ny] == Enemy) {
-			text_color();
-			system("cls");
-			text_color();
+        if (input == '') { // 위로 이동
+            int nx = 현재 플레이어의 위치를 나타내는 변수x - 1;
+            int ny = 현재 플레이어의 위치를 나타내는 변수y;
+            if (nx >= 0 && 현재 플레이어의 위치를 나타내는 변수[nx][ny] != Wall) { // 벽을 넘어가지 않도록 확인
+                현재 플레이어의 위치를 나타내는 변수x = nx;
+            }
+        }
+        else if (input == '') { // 왼쪽으로 이동
+            int nx = 현재 플레이어의 위치를 나타내는 변수x;
+            int ny = 현재 플레이어의 위치를 나타내는 변수y - 1;
+            if (ny >= 0 && 현재 플레이어의 위치를 나타내는 변수[nx][ny] != Wall) { // 벽을 넘어가지 않도록 확인
+                현재 플레이어의 위치를 나타내는 변수y = ny;
+            }
+        }
+        else if (input == '') { // 아래로 이동
+            int nx = 현재 플레이어의 위치를 나타내는 변수x + 1;
+            int ny = 현재 플레이어의 위치를 나타내는 변수y;
+            if (nx < length && 현재 플레이어의 위치를 나타내는 변수[nx][ny] != Wall) { // 벽을 넘어가지 않도록 확인
+                현재 플레이어의 위치를 나타내는 변수x = nx;
+            }
+        }
+        else if (input == '') { // 오른쪽으로 이동
+            int nx = 현재 플레이어의 위치를 나타내는 변수x;
+            int ny = 현재 플레이어의 위치를 나타내는 변수y + 1;
+            if (ny < width && 현재 플레이어의 위치를 나타내는 변수[nx][ny] != Wall) { // 벽을 넘어가지 않도록 확인
+                현재 플레이어의 위치를 나타내는 변수y = ny;
+            }
+        }
 
-			gotoxy(int x, int y);
-			cout << "           화면이 어두워지며 공포 이미지 출력             ";
-			gotoxy(int x, int y); // 종료하려면 enter키
-			text_color();
-			cout << "Press Enter\n";
-			int input = 0;
-			while (1) {
-				input = _getch();
-				if (input == ENTER) {
-					end_flag = true;
-					return 0;
-				}
-			}
-		}
-		else if (미로의 상태를 저장하는 2차원 배열[nx][ny] == GOAL) {
-			text_color();
-			system("cls");
-			text_color();
-
-			gotoxy(int x, int y);
-			cout << "             탈출!            ";
-			text_color();
-			gotoxy(int x, int y);
-			text_color();
-			cout << "Press Enter\n";
-			int input = 0;
-			while (1) {
-				input = _getch();
-				if (input == ENTER) {
-					end_flag = true;
-					return 0;
-				}
-			}
-		}
-		else return 0;
-	}
-}
+        // 적 캐릭터 이동
+        for (int i = 0; i < enemy_num; i++) {
+            int nx = E[i].현재 플레이어의 위치를 나타내는 변수x + 상하좌우 방향으로 움직일 때의 x축 변화량 저장하는 배열[E[i].배열];
+            int ny = E[i].현재 플레이어의 위치를 나타내는 변수y + 상하좌우 방향으로 움직일 때의 x축 변화량 저장하는 배열[E[i].배열];
+            if (nx >= 0 && nx < length && ny >= 0 && ny < width && 현재 플레이어의 위치를 나타내는 변수[nx][ny] != Wall) { // 벽을 넘어가지 않도록 확인
+                E[i].현재 플레이어의 위치를 나타내는 변수x = nx;
+                E[i].현재 플레이어의 위치를 나타내는 변수y = ny;
+            }
+        }
 
 //게임 종료 조건
 bool clear(int stage){

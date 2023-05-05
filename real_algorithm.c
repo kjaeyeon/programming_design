@@ -173,18 +173,28 @@ void print_maze() {
 }
 //블럭 체크
 //게임 종료 조건
+bool clear(int stage){
+switch(stage){
 //(stage1)
-if(팩맨이 목표지점에 도달하면)
-    break;
-    else if(고스트의 위치와 팩맨의 위치가 같아지면)
-    break;
+case 1 :
+   if(고스트의 위치와 팩맨의 위치가 같아지면)
+   	printf("탈출 실패");
+  	retrun 0;
+   else if(팩맨이 골인 지점에 들어간다면)
+ 	return 1;
 //(stage2)
-if(팩맨이 열쇠를 가지고 목표 지점에 도달하면)
-    break;
-    else if(고스트의 위치와 팩맨의 위치가 같아지면)
-    break;
-
-
+case 2:
+	if(고스트의 위치와 팩맨의 위치가 같아지면)
+   	printf("탈출 실패");
+  	retrun 0;
+   else if(팩맨이 골인 지점에 들어간다면)
+ 	if(열쇠를 가지고 있는가?)
+		return 1;
+	else
+		printf("열쇠를 가지고 와야 나갈 수 있다.");
+		return 0;
+    }
+}
 //아이템 추가
 //아이템위치생성
 int item_row, item_col; //아이템의 생성위치
@@ -208,18 +218,6 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 
 //bgm 추가
 //공포 이미지 추가
-void image_add(){
-    FILE *fp;
-    char ch;
-    fp = fopen("공포도트 이미지.txt", "r");
-    if(fp == NULL) {
-        return 1;
-    }
-    while((ch = fgetc(fp)) != EOF) {
-        printf("%c", ch);
-    }
-    fclose(fp);
-}
 //시야 제한 ->코딩 후 문제점이 발생하면 그래픽 함수 사용
 void display(int x, int y) {
     for (int i = x - 2; i <= x + 2; i++) {

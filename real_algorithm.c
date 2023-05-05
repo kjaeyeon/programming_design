@@ -112,13 +112,64 @@ int main(){
 }
 
 //미로 만들기
-   //초기 미로 생성
-   //벽 뚫기 위해 랜덤으로 위치 선정
+void maze(){
+    srand((unsigned)time(NULL));//미로값 초기화
+    //미로크기 설정
+    int length, width;//길이와 폭 설정
+    system("cls");
+    create_maze();
+    maze_set();
+//미로만들기
+void create_maze(){
+    for (int i = 0; i < 길이; i++) {
+		for (int j = 0; j < 폭; j++) {
+			if (길이,폭이 모두 짝수일때) 
+            {
+				벽을 만듦;
+			}
+			else if (길이가 짝수, 폭이 홀수일때) 
+            {
+				벽을 만듦;
+			}
+			else if (길이가 홀수, 폭이 짝수일때)  
+            {
+				벽을 만듦;
+			}
+			else //길이,폭이 모두 홀수 일때
+            {
+				길을 만듦;
+			}
+		}
+	}
+    // 길이,폭이 홀수 일때 길이 만들었으니 길 사이사이 벽을 뚫어 미로를 만들기 위해 랜덤으로 길 위치 선정
+    int rand_length, rand_width;
+    do {
+        rand_length = rand() % length;
+        rand_width = rand() % width;
+    } while (랜덤으로 생성한 길이 폭이 짝수일때);
+    랜덤으로 벽을 뚫음;
+}
 
-
-//미로 세팅하기
-//미로 출력하기
-//미로 실행하기
+//미로 설정
+void maze_set() {
+    maze[1][1] = 팩맨 생성;
+    pos_random(목적지 생성); 
+    pos_random(고스트생성);
+}
+//미로 출력
+void print_maze() {
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j < width; j++) {
+            if (팩맨) text_color(연두색, 회색);
+            else if (목적지) text_color(노란색, 회색);
+            else if (고스트) text_color(빨간색, 회색);
+            else if (길) text_color(회색, 회색);
+            else text_color(파란색, 파란색);//벽
+            cout << maze[i][j];
+        }
+        cout << "\n";
+    }
+}
 //블럭 체크
 //게임 종료 조건
 //아이템 추가

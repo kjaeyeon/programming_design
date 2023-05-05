@@ -197,7 +197,22 @@ map[item_row][item_col] = 2;}//2는 황금열쇠로 출력 맵에서 0은 길, 1
 //bgm 추가
 //공포 이미지 추가
 //시야 제한
-
+void display(int x, int y) {
+    for (int i = x - 2; i <= x + 2; i++) {
+        for (int j = y - 2; j <= y + 2; j++) {
+            if (i >= 0 && i < ROW && j >= 0 && j < COL) { // 미로 범위 내에서만 출력
+                if (i == x && j == y) { 
+                    printf("@"); //현재 위치
+                } else if (maze[i][j] == WALL) { 
+                    printf("■"); //벽
+                } else { // 길은 공백으로 표시
+                    printf(" ");
+                }
+            }
+        }
+        printf("\n"); // 한 줄 출력 후 개행
+    }
+}
 //클리어 시간 출력
 stage_clear_time = stage1_time + stage2_time
 int clear_minutes = stage_clear_time/60;

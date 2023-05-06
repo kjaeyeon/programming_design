@@ -307,36 +307,38 @@ void display(int x, int y) {
         printf("\n"); // 한 줄 출력 후 개행
     }
 }
+
 //클리어 시간 출력
 void clear_time(){
-stage_clear_time = stage1_time + stage2_time
-int clear_minutes = stage_clear_time/60;
-int clear_second = stage_clear_time%60;
-printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_second);
+stage_clear_time = stage1_time + stage2_time  //stage1, 2의 클리어 시간을 합쳐서 총 스테이지 클리어 시간을 생성
+int clear_minutes = stage_clear_time/60;  //초 단위로 되어있는 총 스테이지 클리어 시간을 60으로 나누어 분단위로 설정
+int clear_second = stage_clear_time%60;  //초 단위로 되어있는 총 스테이지 클리어 시간을 60으로 나눈 나머지로 초단위 계산
+printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_second);  //클리어 하는데 걸린 시간을 분과 초로 출력
 }
 
 //명예의 전당 화면
-#define SIZE 10
-void rank(){
+#define SIZE 10   //SIZE를 10으로 크기 설정
+void rank(){   //rank라는 all_time을 정렬 후 3개를 출력하는 함수를 정의
 int all_time[SIZE]; //클리어 시간이 들어있는 배열
 int i, j, min, temp;
-for(i = 0; i < SIZE; i++){
-    min = i;
-    for(j=i+1; j<SIZE; j++){
-        if(all_time[j]<all_time[min]){
-            min = j;
+for(i = 0; i < SIZE; i++){ //i를 0부터 SIZE-1까지 반복
+    min = i;  //i를 최솟값으로 설정
+    for(j=i+1; j<SIZE; j++){   // i+1부터 SIZE-1까지 j를 증가시키며 반복
+        if(all_time[j]<all_time[min]){  //j번째 요소가 min번째 요소보다 작을 때
+            min = j;  //j를 최솟값으로 설정
         }
     }
-    temp = all_time[i];
-    all_time[j] = all_time[min];
-    all_time[min] = temp;
+    temp = all_time[i];  //all_timr[i]를 temp에 저장
+    all_time[j] = all_time[min];  //all_time[min]을 all_time[i]에 저장
+    all_time[min] = temp;  //temp를 all_time[min]에 저장
 }
-printf("순위\n");
+printf("순위\n");    //상위 3개 클리어 시간을 출력
 for(i=0; i<3; i++){
     printf("%d\n",all_time[i]);
     }
 }
 }
+
 //goto 함수 제작
 void gotoxy(int x, int y){
    COORD Pos={x-1, y-1};

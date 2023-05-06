@@ -11,14 +11,12 @@ while(1){
       exit(1); //나가기
 }
 //게임 시작 화면
-int game_start(){
+int game_start(stage){
     switch(stage)
-        case 2 : 아이템 생성;
+        case 2 : gold_item();
         defalut :
-            미로 호출;
-            팩맨과 고스트 생성;
-            목적지 생성;
-            타이머 호출(stage);
+            maze();
+            game_timer(stage);
             
      
      return 0;
@@ -118,7 +116,25 @@ void ghost_move(){
 }
 //메인 함수
 int main(){
+   int stage=1;
    game_menu();
+   bgm();
+   game_story();
+   image_add();
+   if(stage=1){
+      game_start(1);
+      if(clear(1))
+         stage++;
+   }
+   if(stage=2){
+      game_start(2);
+      if(clear(2)){
+         rank();
+	 clear_time();
+	 if(나가기를 누른다면)
+	    game_menu();
+      }
+   }
 }
 
 //미로 만들기
@@ -250,7 +266,7 @@ BOOL PlaySound(
     DWORD SND_ASYNC
 );
 //공포BGM 불러와서 비동기적 재생
-int main() {
+int bgm() {
     PlaySound(유니코드변환("공포 BGM"), NULL, SND_ASYNC);
 
     // 게임 로직 등...
@@ -292,14 +308,16 @@ void display(int x, int y) {
     }
 }
 //클리어 시간 출력
+void clear_time(){
 stage_clear_time = stage1_time + stage2_time
 int clear_minutes = stage_clear_time/60;
 int clear_second = stage_clear_time%60;
 printf("클리어 하는데 %d분 %d초 걸렸습니다.\n", clear_minute, clear_second);
-
+}
 
 //명예의 전당 화면
 #define SIZE 10
+void rank(){
 int all_time[SIZE]; //클리어 시간이 들어있는 배열
 int i, j, min, temp;
 for(i = 0; i < SIZE; i++){
@@ -318,7 +336,7 @@ for(i=0; i<3; i++){
     printf("%d\n",all_time[i]);
     }
 }
-
+}
 //goto 함수 제작
 void gotoxy(int x, int y){
    COORD Pos={x-1, y-1};

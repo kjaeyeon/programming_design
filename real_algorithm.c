@@ -146,14 +146,15 @@ void maze(){
     srand((unsigned int)time(NULL));//미로값 초기화
     //미로크기 설정
     int length, width;//길이와 폭 설정
-    system("cls");
-    create_maze();
-    maze_set();
-    print_maze();
+    system("cls");//화면초기화
+    create_maze();//미로만들기
+    maze_set();//미로설정하기
+    print_maze();//미로 기력하기
 }
 //미로만들기
 void create_maze(){
-    for (int i = 0; i < 길이; i++) {
+    for (int i = 0; i < 길이; i++)//길이 폭이 홀수일때만 길을 출력하고 나머지는 벽을 출력함---> 양궁의 과녁판 같은 모양
+    {
 		for (int j = 0; j < 폭; j++) {
 			if (길이,폭이 모두 짝수일때) 
             {
@@ -176,9 +177,9 @@ void create_maze(){
     // 길이,폭이 홀수 일때 길이 만들었으니 길 사이사이 벽을 뚫어 미로를 만들기 위해 랜덤으로 길 위치 선정
     int rand_length, rand_width;
     do {
-        rand_length = rand() % length;
-        rand_width = rand() % width;
-    } while (랜덤으로 생성한 길이 폭이 짝수일때);
+        rand_length = rand() % length;//랜덤한 길이를 뽑음
+        rand_width = rand() % width;//랜덤한 폭을 뽑음
+    } while (랜덤으로 생성한 길이 폭이 짝수일때);//랜덤으로 뽑은 길이와 폭이 짝수일때--->벽일때 벽을 길로 바꿈--->벽을 뚫음
     랜덤으로 벽을 뚫음;
 }
 
@@ -189,7 +190,8 @@ void maze_set() {
     pos_random(고스트생성);
 }
 //미로 출력
-void print_maze() {
+void print_maze()//미로의 필수 요소인 팩맨, 목적지, 고스트,길,벽을 지정한 색으로 
+{
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < width; j++) {
             if (팩맨) text_color(연두색, 회색);

@@ -59,8 +59,7 @@ int packman_create(int x, int y){
 //팩맨 삭제
 void packman_remove(int x, int y){
     gotoxy(x,y);
-    printf("\0");
-    
+    printf("\0");  
 }
 //팩맨의 움직임
 void packman_move(){
@@ -102,6 +101,11 @@ void ghost_create(int x, int y){
     gotoxy(x,y); 
     printf("(호박)");
 }
+//팩맨 삭제
+void ghost_remove(int x, int y){
+    gotoxy(x,y);
+    printf("\0");  
+}
 //고스트의 움직임
 void ghost_move(){
     while(game_start()){
@@ -112,7 +116,7 @@ void ghost_move(){
     }
 
 }
-   
+
 }
 //메인 함수
 int main(){
